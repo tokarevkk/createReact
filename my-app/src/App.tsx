@@ -4,9 +4,11 @@ import { TodoForm } from "./components/TodoForm";
 import { TodoList } from './components/TodoList'
 
 function App() {
+  // move App to the /pages folder
   const [todos, setTodos] = useState<Array<Todo>>([]);
 
   const toggleComplete: ToggleComplete = selectedTodo => {
+    // wrap all handlers with useCallback
     const updatedTodos = todos.map(todo => {
       if (todo === selectedTodo) {
         return { ...todo, complete: !todo.complete }
@@ -18,12 +20,15 @@ function App() {
 
   const addTodo: AddTodo = newTodo => {
     if (newTodo !== "") {
+      // if (newTodo)
       setTodos([...todos, { text: newTodo, complete: false }])
     }
   };
 
   const removeTodo: RemoveTodo = todoToRemove => {
+    // return type is not needed
     let updatedTodos: Array<Todo> = todos.filter(todo => todo.text != todoToRemove.text);
+    // use === and !== instead of == and !=
     setTodos(updatedTodos)
   }
 
