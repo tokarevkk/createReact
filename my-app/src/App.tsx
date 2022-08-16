@@ -1,47 +1,47 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import './App.css';
 import { TodoForm } from "./components/TodoForm";
 import { TodoList } from './components/TodoList'
 
 function App() {
-  // move App to the /pages folder
   const [todos, setTodos] = useState<Array<Todo>>([]);
 
-  const toggleComplete: ToggleComplete = selectedTodo => {
-    // wrap all handlers with useCallback
+  const toggleComplete = useCallback((selectedTodo: Todo) => {
     const updatedTodos = todos.map(todo => {
-      if (todo === selectedTodo) {
+      if (todo.text === selectedTodo.text) {
         return { ...todo, complete: !todo.complete }
       }
       return todo
     });
     setTodos(updatedTodos)
-  };
+  },
+     []
+  );
 
-  const addTodo: AddTodo = newTodo => {
-    if (newTodo !== "") {
-      // if (newTodo)
+   const addTodo = useCallback((newTodo: string) => {
+    if (newTodo) {
       setTodos([...todos, { text: newTodo, complete: false }])
     }
-  };
+  },[]
+  );
 
-  const removeTodo: RemoveTodo = todoToRemove => {
-    // return type is not needed
-    let updatedTodos: Array<Todo> = todos.filter(todo => todo.text != todoToRemove.text);
-    // use === and !== instead of == and !=
-    setTodos(updatedTodos)
-  }
+   const removeTodo = useCallback((todoToRemove: string) => {
+      let updatedTodos: Array<Todo> = todos.filter(todo => todo.text !== todoToRemove);
+      setTodos(updatedTodos)
+   },
+      []
+   );
 
   const editTodo: EditTodo = todoToEdit => {
-    let todoToUpdateIndex: number = todos.findIndex(todo => todo.text == todoToEdit.text);
+    let todoToUpdateIndex: number = todos.findIndex(todo => todo.text === todoToEdit.text);
     console.log(todoToUpdateIndex)
   }
 
   return (
     <div className="todo-app">
-      <header>
+      <header> 
         <h1>
-        Todo List
+        Today
         </h1>
       </header>
       <TodoForm addTodo={addTodo}/>
