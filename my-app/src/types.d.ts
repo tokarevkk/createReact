@@ -1,5 +1,5 @@
 type AddTodo = (newTodo: string) => void
-type RemoveTodo = (todoToRemove: Todo) => void
+type RemoveTodo = (todoToRemove: string) => void 
 type EditTodo = (todoToEdit: Todo) => void
 
 type Todo = {

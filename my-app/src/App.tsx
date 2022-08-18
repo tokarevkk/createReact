@@ -15,21 +15,21 @@ function App() {
     });
     setTodos(updatedTodos)
   },
-     []
+     [todos]
   );
 
    const addTodo = useCallback((newTodo: string) => {
     if (newTodo) {
       setTodos([...todos, { text: newTodo, complete: false }])
     }
-  },[]
+  },[todos]
   );
 
    const removeTodo = useCallback((todoToRemove: string) => {
       let updatedTodos: Array<Todo> = todos.filter(todo => todo.text !== todoToRemove);
       setTodos(updatedTodos)
    },
-      []
+      [todos]
    );
 
   const editTodo: EditTodo = todoToEdit => {

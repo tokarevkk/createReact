@@ -14,7 +14,7 @@ export const TodoListItem: React.FC<TodoListItemProps> = ({ todo, toggleComplete
       const [inputText, setInputText] = useState<string>(todo.text)
     
       const onDelete = () => {
-         onRemoveTodo(todo);
+         onRemoveTodo(todo.text);
       }
     
       const onEdit = () => {
