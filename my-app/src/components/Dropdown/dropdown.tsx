@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BiTrash } from "react-icons/bi";
-
+import './dropdown.css'
 
 interface DropdownItemProps {
    icon?: string

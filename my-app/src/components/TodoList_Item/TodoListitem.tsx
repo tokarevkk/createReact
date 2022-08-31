@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Dropdown } from "./dropdown";
+import { Dropdown } from "../Dropdown/dropdown";
 
 interface TodoListItemProps {
    todo: Todo;

@@ -1,7 +1,9 @@
 import { useCallback, useState } from 'react';
 import './App.css';
-import { TodoForm } from "./components/TodoForm";
-import { TodoList } from './components/TodoList'
+import { TodoForm } from "../TodoForm/TodoForm";
+import { TodoList } from '../TodoList/TodoList';
+
+
 
 function App() {
   const [todos, setTodos] = useState<Array<Todo>>([]);
